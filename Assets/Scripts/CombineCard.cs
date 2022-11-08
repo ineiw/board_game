@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CombineCard : MonoBehaviour
 {
-    public GameObject parentCardPrefab = null;
+    public GameObject cardPrefab = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,26 +14,32 @@ public class CombineCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //array to list
+        GameObject[] cardArray = GameObject.FindGameObjectsWithTag("NotOnHandCard");
+
+        List<Transform> cardList = new List<Transform>();
+        
+        foreach (GameObject card in cardArray)
+        {
+            cardList.Add(card.transform);
+        }
+
+        foreach(Transform card in cardList){
+            if(card.GetComponent<CardControl>().overlap == true){
+                RemoveCards(card.gameObject, card.GetComponent<CardControl>().overlapCard);
+                GenerateNewCard(card.transform.position);
+                break;
+            }
+        }
         
     }
+    void GenerateNewCard(Vector2 cardPosition){
+        GameObject newCard = Instantiate(cardPrefab, cardPosition, Quaternion.identity);
+        newCard.GetComponent<SpriteRenderer>().color = Color.red;
+    }
 
-    // if card collider bounds contains other card collider bounds then overlap
-    // void OnTriggerStay2D(Collider2D other){
-    //     if(other.gameObject.tag == "Card"){
-    //         if(!other.gameObject.GetComponent<CardControl>().isOnHand){
-    //             if(GetComponent<Collider2D>().bounds.Contains((Vector2)other.transform.position)){
-    //                 if(!GetComponent<CardControl>().isOnHand){
-    //                     CardOverlap(other.transform.position, other.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-    // overlap code here
-    void CardOverlap(Vector2 targetCardPos, int targetSortOrder){
-        // if card is on floor then combine
-        transform.position = targetCardPos - new Vector2(0, 0.3f);
-        transform.GetComponent<SpriteRenderer>().sortingOrder = targetSortOrder + 1;
-        // if card is on hand then combine
+    void RemoveCards(GameObject card1, GameObject card2){
+        Destroy(card1);
+        Destroy(card2);
     }
 }

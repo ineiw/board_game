@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CardControl : MonoBehaviour
 {
-    bool isOnHand = false;
+    public bool isOnHand = false;
+    public bool overlap = false;
+    public GameObject overlapCard = null;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +21,9 @@ public class CardControl : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector3.zero);
-            if(hit.collider != null){
-                if(hit.collider.gameObject.tag == "Card"){
-                    isOnHand = true;
-                }
+            if(GetComponent<Collider2D>().bounds.Contains((Vector2)mousePos)){
+                isOnHand = true;
             }
-            Debug.Log(hit.collider.name);
         }
         if(Input.GetMouseButtonUp(0)){
             isOnHand = false;
@@ -33,6 +31,26 @@ public class CardControl : MonoBehaviour
         if(isOnHand){
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mousePos;
+        }
+
+        Tagging();
+    }
+
+    void Tagging(){
+        if(isOnHand){
+            gameObject.tag = "OnHandCard";
+        }
+        else{
+            gameObject.tag = "NotOnHandCard";
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if(other.gameObject.tag == "NotOnHandCard" && isOnHand == false){
+            if(GetComponent<Collider2D>().bounds.Contains(other.transform.position)){
+                overlap = true;
+                overlapCard = other.gameObject;
+            }
         }
     }
 }
