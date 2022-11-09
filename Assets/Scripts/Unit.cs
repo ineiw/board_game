@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour
     public int currentHealth = 100;
     public int attack = 10;
     public int defense = 10;
-    public int speed = 10;
+    public int speed = 1;
     public int range = 1;
     
     protected List<Transform> GetEnemyUnitsList(){

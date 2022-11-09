@@ -12,6 +12,7 @@ TagManager:
   - UnitZone
   - Unit
   - EnemyUnit
+  - PlayerUnit
   layers:
   - Default
   - TransparentFX
