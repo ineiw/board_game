@@ -12,27 +12,54 @@ public class Unit : MonoBehaviour
     public int speed = 10;
     public int range = 1;
     
-    Vector2 GetTargetDir(Vector2 targetPosition){
+    protected List<Transform> GetEnemyUnitsList(){
+        string enemyTag = "";
+        if(gameObject.tag == "PlayerUnit")
+            enemyTag = "EnemyUnit";
+        else
+            enemyTag = "PlayerUnit";
+        
+        GameObject[] enemyArray = GameObject.FindGameObjectsWithTag(enemyTag);
+        List<Transform> enemyList = new List<Transform>();
+        foreach (GameObject enemy in enemyArray)
+        {
+            enemyList.Add(enemy.transform);
+        }
+        return enemyList;
+    }
+    protected Vector2 GetNeariestTargetPosition(List<Transform> targets){
+        Vector2 neariestTarget = Vector2.zero;
+        float neariestDistance = 10000;
+        foreach(Transform target in targets){
+            float distance = Vector2.Distance(transform.position, target.position);
+            if(distance < neariestDistance){
+                neariestDistance = distance;
+                neariestTarget = target.position;
+            }
+        }
+        return neariestTarget;
+    }
+    protected Vector2 GetTargetDir(Vector2 targetPosition){
         Vector2 targetDir = targetPosition - (Vector2)transform.position;
         return targetDir.normalized;
     }
 
-    void Move(Vector2 targetDir){
+    protected void Move(Vector2 targetDir){
         transform.Translate(targetDir * speed * Time.deltaTime);
     }
 
-    void Attack(Unit target){
+    protected void Attack(Unit target){
         target.TakeDamage(attack);
     }
 
-    void TakeDamage(int damage){
+    protected void TakeDamage(int damage){
         currentHealth -= damage;
         if(currentHealth <= 0){
             Die();
         }
     }
 
-    void Die(){
+    protected void Die(){
         Destroy(gameObject);
     }    
 }
