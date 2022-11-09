@@ -18,7 +18,7 @@ public class CombineCard : MonoBehaviour
         GameObject[] cardArray = GameObject.FindGameObjectsWithTag("NotOnHandCard");
 
         List<Transform> cardList = new List<Transform>();
-        
+
         foreach (GameObject card in cardArray)
         {
             cardList.Add(card.transform);
@@ -27,13 +27,13 @@ public class CombineCard : MonoBehaviour
         foreach(Transform card in cardList){
             if(card.GetComponent<CardControl>().overlap == true){
                 RemoveCards(card.gameObject, card.GetComponent<CardControl>().overlapCard);
-                GenerateNewCard(card.transform.position);
+                GenerateNewCard(cardPrefab,card.transform.position);
                 break;
             }
         }
         
     }
-    void GenerateNewCard(Vector2 cardPosition){
+    void GenerateNewCard(GameObject cardPrefab,Vector2 cardPosition){
         GameObject newCard = Instantiate(cardPrefab, cardPosition, Quaternion.identity);
         newCard.GetComponent<SpriteRenderer>().color = Color.red;
     }

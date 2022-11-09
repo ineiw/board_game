@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Card
   - ChildCard
+  - OnHandCard
+  - NotOnHandCard
+  - CardZone
+  - UnitZone
+  - Unit
+  - EnemyUnit
   layers:
   - Default
   - TransparentFX
