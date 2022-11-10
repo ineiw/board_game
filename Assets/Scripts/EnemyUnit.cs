@@ -16,17 +16,22 @@ public class EnemyUnit : Unit
     {
         List<Transform> enemyUnits = GetEnemyUnitsList();
         
-        Vector2 neariestTargetPosition = GetNeariestTargetPosition(enemyUnits);
-        GameObject neariestTarget = GetNeariestTarget(enemyUnits);
-        Rigidbody2D neariestTargetRigidbody = neariestTarget.GetComponent<Rigidbody2D>();
-        Unit neariestTargetUnit = neariestTarget.GetComponent<Unit>();
-        
-        if(IfInRange(neariestTargetUnit.transform.position)){
-            neariestTargetRigidbody.AddForce(GetTargetDir(neariestTargetPosition) * attack * power);
-            Attack(neariestTargetUnit);
+        try{
+            Vector2 neariestTargetPosition = GetNeariestTargetPosition(enemyUnits);
+            GameObject neariestTarget = GetNeariestTarget(enemyUnits);
+            Rigidbody2D neariestTargetRigidbody = neariestTarget.GetComponent<Rigidbody2D>();
+            Unit neariestTargetUnit = neariestTarget.GetComponent<Unit>();
+
+            if(IfInRange(neariestTargetUnit.transform.position)){
+                neariestTargetRigidbody.AddForce(GetTargetDir(neariestTargetPosition) * attack * power);
+                Attack(neariestTargetUnit);
+            }
+            else{
+                Move(GetTargetDir(neariestTargetPosition));
+            }
         }
-        else{
-            Move(GetTargetDir(neariestTargetPosition));
+        catch{
+            Debug.Log("No enemy units");
         }
     }
 }

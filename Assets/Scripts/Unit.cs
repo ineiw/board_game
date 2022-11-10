@@ -85,8 +85,4 @@ public class Unit : MonoBehaviour
         else
             return false;
     }
-
-    protected void AttackIfInRange(Unit target){
-
-    }
 }
