@@ -128,7 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOnHand: 0
   overlap: 0
+  onUnitZone: 0
   overlapCard: {fileID: 0}
+  unitPrefab: {fileID: 2736022050970532352, guid: f1329b6a4dbced14292692aeb331e3b4, type: 3}
 --- !u!114 &1385933687848435785
 MonoBehaviour:
   m_ObjectHideFlags: 0

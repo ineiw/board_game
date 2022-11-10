@@ -7,6 +7,7 @@ public class CardControl : MonoBehaviour
     public bool isOnHand = false;
     public bool overlap = false;
     public GameObject overlapCard = null;
+    public GameObject unitPrefab = null;
 
     // Start is called before the first frame update
     void Start()
@@ -45,12 +46,21 @@ public class CardControl : MonoBehaviour
         }
     }
 
+    void toUnit(){
+        GameObject newUnit = Instantiate(unitPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerStay2D(Collider2D other) {
         if(other.gameObject.tag == "NotOnHandCard" && isOnHand == false){
             if(GetComponent<Collider2D>().bounds.Contains(other.transform.position)){
                 overlap = true;
                 overlapCard = other.gameObject;
             }
+        }
+
+        if(other.gameObject.tag == "UnitZone" && isOnHand == false){
+            toUnit();
         }
     }
 }

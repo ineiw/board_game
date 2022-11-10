@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 87710358}
   - component: {fileID: 87710357}
+  - component: {fileID: 87710359}
   m_Layer: 0
   m_Name: CardZone
   m_TagString: CardZone
@@ -207,6 +208,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &87710359
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87710356}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +270,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.7740471, g: 0.8679245, b: 0.61819154, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -300,7 +327,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1385933687848435784, guid: 10412b5b943f347448ab8eb9fdec0423, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1385933687848435784, guid: 10412b5b943f347448ab8eb9fdec0423, type: 3}
       propertyPath: m_LocalPosition.x
@@ -369,7 +396,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 954884361383505521, guid: 310e17c55080f7049b1eacf8adc9c50a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 954884361383505521, guid: 310e17c55080f7049b1eacf8adc9c50a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -541,6 +568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2057307837}
   - component: {fileID: 2057307836}
+  - component: {fileID: 2057307838}
   m_Layer: 0
   m_Name: UnitZone
   m_TagString: UnitZone
@@ -613,8 +641,34 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2057307838
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057307835}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &1385933688471528300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -686,7 +740,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 954884361383505521, guid: f1329b6a4dbced14292692aeb331e3b4, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 954884361383505521, guid: f1329b6a4dbced14292692aeb331e3b4, type: 3}
       propertyPath: m_LocalPosition.x
