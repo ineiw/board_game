@@ -7,7 +7,7 @@ public class PlayerUnit : Unit
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -16,7 +16,16 @@ public class PlayerUnit : Unit
         List<Transform> enemyUnits = GetEnemyUnitsList();
         
         Vector2 neariestTargetPosition = GetNeariestTargetPosition(enemyUnits);
+        GameObject neariestTarget = GetNeariestTarget(enemyUnits);
+        Rigidbody2D neariestTargetRigidbody = neariestTarget.GetComponent<Rigidbody2D>();
+        Unit neariestTargetUnit = neariestTarget.GetComponent<Unit>();
 
-        Move(GetTargetDir(neariestTargetPosition));
+        if(IfInRange(neariestTargetUnit.transform.position)){
+            neariestTargetRigidbody.AddForce(GetTargetDir(neariestTargetPosition) * attack * power);
+            Attack(neariestTargetUnit);
+        }
+        else{
+            Move(GetTargetDir(neariestTargetPosition));
+        }
     }
 }

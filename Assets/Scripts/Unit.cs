@@ -5,6 +5,8 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     // unit preferences
+    protected float power = 40f;
+    protected Rigidbody2D rigidbody;
     public int maxHealth = 100;
     public int currentHealth = 100;
     public int attack = 10;
@@ -39,6 +41,19 @@ public class Unit : MonoBehaviour
         }
         return neariestTarget;
     }
+
+    protected GameObject GetNeariestTarget(List<Transform> targets){
+        GameObject neariestTarget = null;
+        float neariestDistance = 10000;
+        foreach(Transform target in targets){
+            float distance = Vector2.Distance(transform.position, target.position);
+            if(distance < neariestDistance){
+                neariestDistance = distance;
+                neariestTarget = target.gameObject;
+            }
+        }
+        return neariestTarget;
+    }
     protected Vector2 GetTargetDir(Vector2 targetPosition){
         Vector2 targetDir = targetPosition - (Vector2)transform.position;
         return targetDir.normalized;
@@ -61,5 +76,17 @@ public class Unit : MonoBehaviour
 
     protected void Die(){
         Destroy(gameObject);
-    }    
+    }
+
+    protected bool IfInRange(Vector2 targetPosition){
+        float distance = Vector2.Distance(transform.position, targetPosition);
+        if(distance <= range)
+            return true;
+        else
+            return false;
+    }
+
+    protected void AttackIfInRange(Unit target){
+
+    }
 }
