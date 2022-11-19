@@ -54,13 +54,27 @@ public class CardControl : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if(other.gameObject.tag == "NotOnHandCard" && isOnHand == false){
             if(GetComponent<Collider2D>().bounds.Contains(other.transform.position)){
-                overlap = true;
-                overlapCard = other.gameObject;
+                if(SameNameCards(gameObject, other.gameObject)){
+                    overlap = true;
+                    overlapCard = other.gameObject;
+                }
+                else{
+                    // avoid overlap position
+                    transform.position = new Vector2(transform.position.x + 1f, transform.position.y);
+                }
             }
         }
 
         if(other.gameObject.tag == "UnitZone" && isOnHand == false){
             toUnit();
+        }
+    }
+    bool SameNameCards(GameObject card1, GameObject card2){
+        if(card1.name.Split("(")[0] == card2.name.Split("(")[0]){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
