@@ -25,7 +25,7 @@ public class CombineCard : MonoBehaviour
         }
 
         foreach(Transform card in cardList){
-            if(card.GetComponent<CardControl>().overlap == true){
+            if(card.GetComponent<CardControl>().overlap == true && SameNameCards(card.gameObject, card.GetComponent<CardControl>().overlapCard) == true){
                 RemoveCards(card.gameObject, card.GetComponent<CardControl>().overlapCard);
                 GenerateNewCard(cardPrefab,card.transform.position);
                 break;
@@ -41,5 +41,14 @@ public class CombineCard : MonoBehaviour
     void RemoveCards(GameObject card1, GameObject card2){
         Destroy(card1);
         Destroy(card2);
+    }
+
+    bool SameNameCards(GameObject card1, GameObject card2){
+        if(card1.name.Split("(")[0] == card2.name.Split("(")[0]){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
