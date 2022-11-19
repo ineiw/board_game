@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CombineCard : MonoBehaviour
 {
-    public GameObject cardPrefab = null;
+    public GameObject[] cardPrefabs = new GameObject[3];
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class CombineCard : MonoBehaviour
         foreach(Transform card in cardList){
             if(card.GetComponent<CardControl>().overlap == true && SameNameCards(card.gameObject, card.GetComponent<CardControl>().overlapCard) == true){
                 RemoveCards(card.gameObject, card.GetComponent<CardControl>().overlapCard);
-                GenerateNewCard(cardPrefab,card.transform.position);
+                GenerateNewCard(cardPrefabs[(int.Parse(card.name.Split("(")[0].Split("d")[1])+1) % 3],card.transform.position);
                 break;
             }
         }
@@ -35,7 +35,6 @@ public class CombineCard : MonoBehaviour
     }
     void GenerateNewCard(GameObject cardPrefab,Vector2 cardPosition){
         GameObject newCard = Instantiate(cardPrefab, cardPosition, Quaternion.identity);
-        newCard.GetComponent<SpriteRenderer>().color = Color.red;
     }
 
     void RemoveCards(GameObject card1, GameObject card2){

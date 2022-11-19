@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1385933687848435791}
   - component: {fileID: 1385933687848435790}
   - component: {fileID: 1385933687848435789}
-  - component: {fileID: 1385933687848435785}
   - component: {fileID: 1385933687848435786}
   m_Layer: 0
   m_Name: Card1
@@ -129,20 +128,10 @@ MonoBehaviour:
   isOnHand: 0
   overlap: 0
   overlapCard: {fileID: 0}
-  unitPrefab: {fileID: 2736022050970532352, guid: f1329b6a4dbced14292692aeb331e3b4, type: 3}
---- !u!114 &1385933687848435785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385933687848435788}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea27b40b29eb0d4448fa0115c041ea91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 1385933687848435788}
+  unitPrefabs:
+  - {fileID: 2736022050970532352, guid: f1329b6a4dbced14292692aeb331e3b4, type: 3}
+  - {fileID: 2736022050970532352, guid: 598cfcdbc101008478981be727b54079, type: 3}
+  - {fileID: 2736022050970532352, guid: 5603b367486e9384aa35f2bb0995021e, type: 3}
 --- !u!50 &1385933687848435786
 Rigidbody2D:
   serializedVersion: 4

@@ -7,7 +7,7 @@ public class CardControl : MonoBehaviour
     public bool isOnHand = false;
     public bool overlap = false;
     public GameObject overlapCard = null;
-    public GameObject unitPrefab = null;
+    public GameObject[] unitPrefabs = new GameObject[3];
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,7 @@ public class CardControl : MonoBehaviour
     }
 
     void toUnit(){
-        GameObject newUnit = Instantiate(unitPrefab, transform.position, Quaternion.identity);
+        GameObject newUnit = Instantiate(unitPrefabs[(int.Parse(gameObject.name.Split("(")[0].Split("d")[1]))], transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
