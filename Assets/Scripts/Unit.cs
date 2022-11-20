@@ -7,12 +7,12 @@ public class Unit : MonoBehaviour
     // unit preferences
     protected float power = 40f;
     protected Rigidbody2D rigidbody;
-    public int maxHealth = 100;
-    public int currentHealth = 100;
-    public int attack = 10;
-    public int defense = 10;
-    public int speed = 1;
-    public int range = 1;
+    public float maxHealth = 100;
+    public float currentHealth = 100;
+    public float attack = 10;
+    public float defense = 10;
+    public float speed = 1;
+    public float range = 1;
     
     protected List<Transform> GetEnemyUnitsList(){
         string enemyTag = "";
@@ -67,7 +67,7 @@ public class Unit : MonoBehaviour
         target.TakeDamage(attack);
     }
 
-    protected void TakeDamage(int damage){
+    protected void TakeDamage(float damage){
         currentHealth -= damage;
         if(currentHealth <= 0){
             Die();
