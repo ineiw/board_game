@@ -103,7 +103,7 @@ MonoBehaviour:
   currentHealth: 100
   attack: 10
   defense: 10
-  speed: 2
+  speed: 1
   range: 1.5
 --- !u!58 &-5706729891381887763
 CircleCollider2D:

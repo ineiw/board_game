@@ -60,7 +60,8 @@ public class Unit : MonoBehaviour
     }
 
     protected void Move(Vector2 targetDir){
-        transform.Translate(targetDir * speed * Time.deltaTime);
+        //move to target using dir
+        rigidbody.AddForce(targetDir * speed * power);
     }
 
     protected void Attack(Unit target){
