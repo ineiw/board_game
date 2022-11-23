@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5623573685909235807}
   - component: {fileID: 5623573685909235806}
   m_Layer: 0
-  m_Name: EnemyUnit
+  m_Name: EnemyUnit0
   m_TagString: EnemyUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2333a110b163d2f43b8e783608330a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefabs:
+  - {fileID: 1385933687848435788, guid: 10412b5b943f347448ab8eb9fdec0423, type: 3}
+  - {fileID: 1385933687848435788, guid: 2a8680b70495cce4aab89c0eaacc645a, type: 3}
+  - {fileID: 1385933687848435788, guid: 71c5d6c1619b0714c98b1fe7b1f94eca, type: 3}
   maxHealth: 100
   currentHealth: 100
   attack: 10

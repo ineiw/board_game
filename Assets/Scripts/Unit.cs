@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    const float EPS = 0.3f;
+    public GameObject[] cardPrefabs = new GameObject[3];
     // unit preferences
     protected float power = 40f;
     protected Rigidbody2D rigidbody;
@@ -76,6 +78,10 @@ public class Unit : MonoBehaviour
     }
 
     protected void Die(){
+        if(gameObject.tag == "EnemyUnit" && EPS > Random.Range(0f, 1f)){
+            Vector2 spawnPosition = new Vector2(Random.Range(-7f, -5f), Random.Range(-2f, 2f));
+            Instantiate(cardPrefabs[int.Parse(gameObject.name.Split("(")[0].Split("t")[1])] , spawnPosition, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 
