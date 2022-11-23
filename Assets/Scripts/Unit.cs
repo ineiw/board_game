@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    const float EPS = 0.3f;
+    const float EPS = 0.1f;
     public GameObject[] cardPrefabs = new GameObject[3];
     // unit preferences
     protected float power = 40f;
