@@ -103,11 +103,11 @@ MonoBehaviour:
   - {fileID: 1385933687848435788, guid: 10412b5b943f347448ab8eb9fdec0423, type: 3}
   - {fileID: 1385933687848435788, guid: 2a8680b70495cce4aab89c0eaacc645a, type: 3}
   - {fileID: 1385933687848435788, guid: 71c5d6c1619b0714c98b1fe7b1f94eca, type: 3}
-  maxHealth: 100
+  maxHealth: 50
   currentHealth: 100
   attack: 10
   defense: 10
-  speed: 1
+  speed: 1.2
   range: 1
 --- !u!58 &5623573685909235807
 CircleCollider2D:

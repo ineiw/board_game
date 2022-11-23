@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    const float EPS = 0.1f;
+    const float EPS = 1f;
     public GameObject[] cardPrefabs = new GameObject[3];
     // unit preferences
     protected float power = 40f;
@@ -15,7 +15,9 @@ public class Unit : MonoBehaviour
     public float defense = 10;
     public float speed = 1;
     public float range = 1;
-    
+    void Start() {
+        Time.timeScale = 0.5f;
+    }
     protected List<Transform> GetEnemyUnitsList(){
         string enemyTag = "";
         if(gameObject.tag == "PlayerUnit")

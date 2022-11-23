@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyUnitSpawner : MonoBehaviour
 {
+    int spawnCount = 1;
     const float SPAWN_INTERVAL = 2f;
     const float EPS = 0.3f;
     public GameObject[] enemyUnitPrefabs = new GameObject[3];
@@ -20,6 +21,7 @@ public class EnemyUnitSpawner : MonoBehaviour
             Vector2 spawnPosition = new Vector2(Random.Range(-3f, 7f), Random.Range(-3f, 3f));
             Instantiate(enemyUnitPrefabs[returnIdx()], spawnPosition, Quaternion.identity);
         }
+        spawnCount++;
         Debug.Log("Spawn enemy unit");
     }
 
@@ -35,14 +37,19 @@ public class EnemyUnitSpawner : MonoBehaviour
         return idx;
     }
     public void SpawnEnemyUnitWhenEnemyUnitIsDead(){
+
         if(GameObject.FindGameObjectsWithTag("EnemyUnit").Length == 0){
             if(durationTime <= 0){
-                SpawnEnemyUnit(3);
+                SpawnEnemyUnit(spawnCountToEnemyCount(spawnCount));
                 durationTime = SPAWN_INTERVAL;
             }
             else{
                 durationTime -= Time.deltaTime;
             }
         }
+    }
+
+    int spawnCountToEnemyCount(int x){
+        return (int)(Mathf.Ceil(x*0.1f));
     }
 }
